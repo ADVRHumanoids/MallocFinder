@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <malloc_finder/malloc_finder.h>
+#include <malloc_finder/malloc_finder_definitions.hpp>
 
 using namespace XBot::Utils;
 
