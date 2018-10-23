@@ -5,6 +5,7 @@
 #include <exception>
 #include <iostream>
 #include <functional>
+#include <execinfo.h>
 
 namespace XBot { namespace Utils {
     
@@ -66,6 +67,16 @@ namespace XBot { namespace Utils {
         static void SetOnFree(std::function<void(void)> f)
         {
             _f_free = f;
+        }
+        
+        static void PrintBacktrace()
+        {
+            void *bt[32];
+            int nentries;
+
+            nentries = backtrace ( bt,sizeof ( bt ) /sizeof ( bt[0] ) );
+            
+            backtrace_symbols_fd ( bt,nentries, fileno (stdout) );
         }
         
     private:
