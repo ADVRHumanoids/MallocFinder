@@ -124,7 +124,8 @@ static void * testing_malloc(size_t size, const void * caller)
 
         if(XBot::Utils::MallocFinder::ThrowsOnMalloc())
         {
-            throw std::runtime_error("ThrowOnMalloc is enabled");
+            printf("Aborting on malloc..\n");
+            std::abort();
         }
 
     }
@@ -152,7 +153,8 @@ static void  testing_free(void * addr, const void * caller)
 
         if(XBot::Utils::MallocFinder::ThrowsOnFree())
         {
-            throw std::runtime_error("ThrowOnFree is enabled");
+            printf("Aborting on free..\n");
+            std::abort();
         }
 
     }
