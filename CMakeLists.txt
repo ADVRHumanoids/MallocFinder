@@ -15,14 +15,18 @@ set(LIBRARY_TARGET_NAME ${PROJECT_NAME})
 # List of header library files.
 set(${LIBRARY_TARGET_NAME}_HEADERS
         include/malloc_finder/malloc_finder.h 
-        include/malloc_finder/malloc_finder_definitions.h
+        include/malloc_finder/malloc_finder_definitions.h 
+)
+
+set(${LIBRARY_TARGET_NAME}_SOURCES
+        src/malloc_finder.cpp
 )
 
 # Define a header-only library
-add_library(${LIBRARY_TARGET_NAME} INTERFACE)
+add_library(${LIBRARY_TARGET_NAME} SHARED ${${LIBRARY_TARGET_NAME}_SOURCES})
 
-# set_target_properties(${LIBRARY_TARGET_NAME} PROPERTIES VERSION       ${${PROJECT_NAME}_VERSION}
-#                                                         PUBLIC_HEADER "${${LIBRARY_TARGET_NAME}_HDR}")
+set_target_properties(${LIBRARY_TARGET_NAME} PROPERTIES VERSION       ${${PROJECT_NAME}_VERSION}
+                                                        PUBLIC_HEADER "${${LIBRARY_TARGET_NAME}_HDR}")
 
 # Specify include directories for both compilation and installation process.
 # The $<INSTALL_PREFIX> generator expression is useful to ensure to create 

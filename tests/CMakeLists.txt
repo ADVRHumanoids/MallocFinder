@@ -18,7 +18,7 @@ if(NOT GTEST_FOUND)
 endif()
 
 
-set(TestLibs ${GTEST_BOTH_LIBRARIES} pthread)
+set(TestLibs ${GTEST_BOTH_LIBRARIES} pthread malloc_finder)
 include_directories(${GTEST_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR})
 link_directories(${GTEST_LIB_DIRS})
 
